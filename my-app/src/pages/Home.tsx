@@ -1,12 +1,8 @@
 import React from 'react';
 import './HomeStyle.ts';
 import {GlobalStyle} from "../style/global"
-
-
-import { Header, Div, Section, Body} from './HomeStyle';
+import { Header, Div, Section, Body, Footer} from './HomeStyle';
 import { CollapseDiv } from '../components/Collapsible/CollapseDiv';
-
-
 
 export function Home() {
 
@@ -24,9 +20,8 @@ export function Home() {
           </Section>
         </Div>
         <CollapseDiv/>
-           
+        <Footer>Made With <img src="icon-heart.png"/>  by Aicha M. Tassa</Footer>
       </Body>  
       
     );
-   
 };

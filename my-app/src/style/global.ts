@@ -9,6 +9,9 @@ html {
     height: 100vh;
     width: 100vw
     font-family: 'Poppins', sans-serif;
+    @media (max-width: 450px) {
+      height: 150vh;
+    }
 }
 body, input, button {
     font-family: 'Poppins', sans-serif;

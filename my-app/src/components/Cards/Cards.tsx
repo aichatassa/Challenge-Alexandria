@@ -1,35 +1,40 @@
-
 import {
   CardWrapper,
 
   CardTextWrapper,
   CardTextDate,
   CardTextTitle,
-  
+
 } from "./index";
-interface CardsProps{
-  painel: {
-    temperatureA: number;
-    temperatureB: number;
-    statusA: number;
-    statusB: number;
-    statusC: number;
-    statusD: number;
-    statusE: number;
-    statusF: number;
-  }
+
+interface CardProps {
+  value: number;
+  index: number;
 }
 
-export function Cards({
-  painel
-}:CardsProps) {
+
+export function Cards({ value, index }: CardProps) {
   return (
-      <CardWrapper>
-        <CardTextWrapper>
-          <CardTextDate>Temperatura Do Painel</CardTextDate>
-          <CardTextTitle>{painel.temperatureA}°C</CardTextTitle>
-     
-        </CardTextWrapper>
-      </CardWrapper>
+
+    <CardWrapper>
+      <CardTextWrapper>
+        {(index === 1 || index === 0)
+          ? <div>
+            <CardTextDate>Temperatura Do Painel</CardTextDate>
+            <CardTextTitle>{value}°C</CardTextTitle>
+          </div>
+          : <div>
+              <CardTextDate>Status do Painel</CardTextDate>
+                {(value === 1)
+            
+                  ?<CardTextTitle><img src="checkmark.svg"></img></CardTextTitle>
+                
+                  :<CardTextTitle><img id="icon-close" src="x-mark.svg"></img></CardTextTitle>
+            
+                }
+          </div>
+        }
+      </CardTextWrapper>
+    </CardWrapper>
   );
 };

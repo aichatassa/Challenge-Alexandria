@@ -2,12 +2,10 @@ import React, { useEffect } from 'react';
 import './HomeStyle.ts';
 import {GlobalStyle} from "../style/global"
 import { useState } from 'react';
-import { Header, CardContainer, DivGrid, Separator, Body} from './HomeStyle';
+import { Header, CardContainer, DivGrid, Separator, Body, Button, Footer} from './HomeStyle';
 import { api } from '../services/api';
 import { Cards } from '../components/Cards/Cards';
-import styled from 'styled-components';
-import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
-
+import { useHistory } from 'react-router-dom';
   type Data = {
     data: [
       painel: {
@@ -25,33 +23,33 @@ import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detec
 
 
 export function Desafio01() {
-    const[val, setVal] = useState<Data>()
+  const[val, setVal] = useState<Data>()
     useEffect(() => {
       const datas = api.get("desafio_01").then(result => {
         setVal(result.data);
         
       })
     },[]);
-  
-      if(isBrowser){
-       return <Body>
-         <GlobalStyle/>
-         <Header> <h1>Desafio 01</h1></Header>
-         <DivGrid>
-        {val?.data.map(painel => {
-          console.log(painel)
-          return (
-            <CardContainer>
-            <Cards painel = {painel}/>
-            <Separator />
-            </CardContainer>
-          )
-        })}
-        </DivGrid>
-      </Body>  
-      }
+    const history = useHistory()
 
-     return <div>ois</div>
-   
-   
+  return <Body>
+          <GlobalStyle/>
+            <Header> <h1>Desafio 01</h1></Header>
+              <DivGrid>
+                {val?.data.map((painel, index) => {
+                  const values = Object.values(painel);
+                  return (
+                    <CardContainer>
+                      <Cards value={values[index]} index={index} />
+                      <Separator />
+                    </CardContainer>
+                  )
+                })}
+              </DivGrid>
+              <Button onClick={() => {history.goBack()}}>
+                <img src="icons-back.png" />Home
+                
+              </Button>
+              <Footer id="home">Made With <img src="icon-heart.png"/>  by Aicha M. Tassa</Footer>
+          </Body>  
 };
