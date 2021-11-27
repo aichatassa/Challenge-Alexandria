@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@types/react-collapsible": "^2.3.1",
+    "react-collapsible": "^2.8.4"
+  }
+}
