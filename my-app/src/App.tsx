@@ -1,49 +1,32 @@
 import React from 'react';
-import './Home.ts';
-import styled from "styled-components";
-import Collapsible from "./Collapsible";
+import './pages/HomeStyle.ts';
+import { BrowserRouter } from "react-router-dom";
+import { Home } from "./pages/Home"
+import { Desafio01 } from "./pages/Desafio01"
 
-import {GlobalStyle} from "./style/global"
-
-
-import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
-import { Header, Li, Ul, A, Div, Section, Body, H1, P } from './Home';
+import { Route } from "react-router-dom";
 
 
-const App = ()=> {
-  
+
+
+
+function App() {
+
     return (
-
-      <Body>
-        <GlobalStyle/>
-        <Header>
-          <Ul>
-            <Li>
-              <A href="#">inicio</A>
-            </Li>
-            <Li>
-            <A href="#">Desafio 1</A>
-            </Li>
-          </Ul>
-        </Header>
-        <Div>
-         <Section>
-           <h1>
-              Desafio Front-End Alexandria             
-           </h1>
-            <h3>Selecione o Desafio desejado:</h3>
-          </Section>
-        </Div>
-        <Div>
-          
-          <button>Desafio 2</button>
-
-        </Div>
-           
-      </Body>  
+      <BrowserRouter>
+    
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/cards">
+          <Desafio01/>
+        </Route>
+      
+      </BrowserRouter> 
       
     );
    
 };
+
 
 export default App;
